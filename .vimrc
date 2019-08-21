@@ -15,6 +15,8 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.xml
     \ set expandtab |
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 set number
+let mapleader=","
+
 set encoding=utf-8
 " Enable folding
 "set foldenable
@@ -51,13 +53,16 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
 " Install UltiSnips
 Plugin 'SirVer/ultisnips'
 
 " Install Odoo snippet
 Plugin 'akretion/vim-odoo-snippets'
+Plugin 'mechatroner/rainbow_csv'
 call vundle#end()
 filetype plugin indent on
+filetype plugin on
 
 " colors zenburn
 colors cobalt2
@@ -81,3 +86,33 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" NERD Comments
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+set termguicolors
+
+if &term =~ '256color'
+    set t_ut=
+endif
