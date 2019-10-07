@@ -1,41 +1,3 @@
-syntax enable
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=100 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-au BufNewFile,BufRead *.js, *.html, *.css, *.xml
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set expandtab |
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-set number
-let mapleader=","
-
-set encoding=utf-8
-" Enable folding
-"set foldenable
-"set foldmethod=marker
-"set foldcolumn=4
-"set foldlevel=0
-"set foldlevel=99
-" Enable folding with spacebar
-noremap <space> za
-filetype indent on
-set autoindent
-let python_highlight_all = 1
-
-map <C-n> <ESC>:NERDTreeToggle<CR>
-map <F2> <ESC>:lclose<CR>
-map <F3> <ESC>:Errors<CR>
-map <F5> <ESC>:tabp<CR>
-map <F6> <ESC>:tabn<CR>
-
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -54,15 +16,43 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'hiqsol/pgsql.vim'
 " Install UltiSnips
 Plugin 'SirVer/ultisnips'
 
 " Install Odoo snippet
 Plugin 'akretion/vim-odoo-snippets'
 Plugin 'mechatroner/rainbow_csv'
+Plugin 'gabesoft/vim-ags'
+Plugin 'mhinz/vim-startify'
 call vundle#end()
 filetype plugin indent on
 filetype plugin on
+syntax enable
+autocmd FileType xml setlocal shiftwidth=2 tabstop=2
+" au BufNewFile,BufRead *.js, *.html, *.css, *.xml
+"     \ set tabstop=2
+"     \ set softtabstop=2
+"     \ set shiftwidth=2
+"     \ set expandtab |
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+set number
+set expandtab
+set fileformat=unix
+let mapleader=","
+
+set encoding=utf-8
+noremap <space> za
+filetype indent on
+set autoindent
+let python_highlight_all = 1
+
+map <C-n> <ESC>:NERDTreeToggle<CR>
+map <F2> <ESC>:lclose<CR>
+map <F3> <ESC>:Errors<CR>
+map <F6> <ESC>:tabp<CR>
+map <F7> <ESC>:tabn<CR>
+
 
 " colors zenburn
 colors cobalt2
@@ -84,8 +74,11 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'mode': 'passive',
+                            \ 'active_filetypes': ['xml'],
+                            \ 'passive_filetypes': ['html', 'javascript'] }
 
 " NERD Comments
 " Add spaces after comment delimiters by default
@@ -111,8 +104,12 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+let g:sql_type_default = 'pgsql'
+
 set termguicolors
 
 if &term =~ '256color'
     set t_ut=
 endif
+
+set splitbelow
