@@ -17,14 +17,19 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'hiqsol/pgsql.vim'
+Plugin 'vim-scripts/dbext.vim'
 " Install UltiSnips
 Plugin 'SirVer/ultisnips'
+Plugin 'vim-python/python-syntax'
 
 " Install Odoo snippet
 Plugin 'akretion/vim-odoo-snippets'
 Plugin 'mechatroner/rainbow_csv'
-Plugin 'gabesoft/vim-ags'
+Plugin 'mileszs/ack.vim'
 Plugin 'mhinz/vim-startify'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'taiansu/nerdtree-ag'
 call vundle#end()
 filetype plugin indent on
 filetype plugin on
@@ -36,6 +41,7 @@ autocmd FileType xml setlocal shiftwidth=2 tabstop=2
 "     \ set shiftwidth=2
 "     \ set expandtab |
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 set number
 set expandtab
 set fileformat=unix
@@ -112,4 +118,19 @@ if &term =~ '256color'
     set t_ut=
 endif
 
+set t_Co=256
+
 set splitbelow
+
+let g:camelcasemotion_key = '<leader>'
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Python syntax
+let g:python_highlight_all = 1
+
+" DBExt
+let g:dbext_default_profile_psql = 'type=PGSQL:host=localhost:port=5433:dbname=gce:user=odoo12'
+let g:dbext_default_profile = 'psql'
