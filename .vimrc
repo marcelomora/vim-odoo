@@ -9,9 +9,11 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/nerdtree'
 Plugin 'herrbischoff/cobalt2.vim'
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
@@ -30,6 +32,10 @@ Plugin 'mhinz/vim-startify'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'taiansu/nerdtree-ag'
+
+" Helper text object
+Plugin 'kana/vim-textobj-user'
+Plugin 'lucapette/vim-textobj-underscore'
 call vundle#end()
 filetype plugin indent on
 filetype plugin on
@@ -60,8 +66,15 @@ map <F6> <ESC>:tabp<CR>
 map <F7> <ESC>:tabn<CR>
 
 
+" set Vim-specific sequences for RGB colors
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+set background=dark
+colorscheme solarized8
 " colors zenburn
-colors cobalt2
+" colors cobalt2
 let g:SimpylFold_fold_import = 1
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 
@@ -119,6 +132,9 @@ if &term =~ '256color'
 endif
 
 set t_Co=256
+set laststatus=2
+" set rtp+=/usr/share/powerline/bindings/vim/
+let g:Powerline_symbols = "fancy"
 
 set splitbelow
 
@@ -134,3 +150,4 @@ let g:python_highlight_all = 1
 " DBExt
 let g:dbext_default_profile_psql = 'type=PGSQL:host=localhost:port=5433:dbname=gce:user=odoo12'
 let g:dbext_default_profile = 'psql'
+
