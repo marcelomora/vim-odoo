@@ -1,42 +1,79 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Add plugins here
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'jnurmine/Zenburn'
-Plugin 'scrooloose/nerdtree'
-Plugin 'herrbischoff/cobalt2.vim'
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'kien/ctrlp.vim'
-" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'vim-airline/vim-airline'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'hiqsol/pgsql.vim'
-Plugin 'vim-scripts/dbext.vim'
-" Install UltiSnips
-Plugin 'SirVer/ultisnips'
-Plugin 'vim-python/python-syntax'
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" " Add plugins here
+" Plugin 'VundleVim/Vundle.vim'
+" Plugin 'tmhedberg/SimpylFold'
+" Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'jnurmine/Zenburn'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'herrbischoff/cobalt2.vim'
+" Plugin 'lifepillar/vim-solarized8'
+" Plugin 'vim-syntastic/syntastic'
+" Plugin 'kien/ctrlp.vim'
+" " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'jmcantrell/vim-virtualenv'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'tpope/vim-surround'
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'hiqsol/pgsql.vim'
+" Plugin 'vim-scripts/dbext.vim'
+" " Install UltiSnips
+" Plugin 'SirVer/ultisnips'
+" Plugin 'vim-python/python-syntax'
+"
+" " Install Odoo snippet
+" Plugin 'akretion/vim-odoo-snippets'
+" Plugin 'mechatroner/rainbow_csv'
+" Plugin 'mileszs/ack.vim'
+" Plugin 'mhinz/vim-startify'
+" Plugin 'bkad/CamelCaseMotion'
+" Plugin 'michaeljsmith/vim-indent-object'
+" Plugin 'taiansu/nerdtree-ag'
+"
+" " Helper text object
+" Plugin 'kana/vim-textobj-user'
+" Plugin 'lucapette/vim-textobj-underscore'
+" call vundle#end()
 
-" Install Odoo snippet
-Plugin 'akretion/vim-odoo-snippets'
-Plugin 'mechatroner/rainbow_csv'
-Plugin 'mileszs/ack.vim'
-Plugin 'mhinz/vim-startify'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'taiansu/nerdtree-ag'
+call plug#begin('~/.vim/plugged')
 
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'jnurmine/Zenburn'
+Plug 'scrooloose/nerdtree'
+Plug 'herrbischoff/cobalt2.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'vim-syntastic/syntastic'
+" Plugin 'kien/ctrlp.vim'
+" " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-airline/vim-airline'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+" Plugin 'hiqsol/pgsql.vim'
+" Plugin 'vim-scripts/dbext.vim'
+" " Install UltiSnips
+Plug 'SirVer/ultisnips'
+" Plugin 'vim-python/python-syntax'
+"
+" " Install Odoo snippet
+Plug 'marcelomora/vim-odoo-snippets'
+Plug 'mechatroner/rainbow_csv'
+Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-startify'
+Plug 'bkad/CamelCaseMotion'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'taiansu/nerdtree-ag'
+"
 " Helper text object
-Plugin 'kana/vim-textobj-user'
-Plugin 'lucapette/vim-textobj-underscore'
-call vundle#end()
+Plug 'kana/vim-textobj-user'
+Plug 'lucapette/vim-textobj-underscore'
+call plug#end()
+
 filetype plugin indent on
 filetype plugin on
 syntax enable
@@ -72,9 +109,9 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set background=dark
-colorscheme solarized8
+" colorscheme solarized8
 " colors zenburn
-" colors cobalt2
+colors cobalt2
 let g:SimpylFold_fold_import = 1
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 
@@ -84,7 +121,7 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-let g:virtualenv_directory='/odoo12/.venvs'
+let g:virtualenv_directory='/home/marcelo/.venvs'
 
 " Syntastic settings
 set statusline+=%#warningmsg#
@@ -143,11 +180,4 @@ let g:camelcasemotion_key = '<leader>'
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-" Python syntax
-let g:python_highlight_all = 1
-
-" DBExt
-let g:dbext_default_profile_psql = 'type=PGSQL:host=localhost:port=5433:dbname=gce:user=odoo12'
-let g:dbext_default_profile = 'psql'
 
